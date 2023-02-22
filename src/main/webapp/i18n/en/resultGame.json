@@ -1,0 +1,9 @@
+{
+  "gameReportApp": {
+    "resultGame": {
+      "null": "",
+      "WIN": "WIN",
+      "LOST": "LOST"
+    }
+  }
+}
