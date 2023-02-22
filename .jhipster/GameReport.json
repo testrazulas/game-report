@@ -1,0 +1,42 @@
+{
+  "changelogDate": "20230222163009",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "pokemonName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lane",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "gameDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "result",
+      "fieldType": "resultGame",
+      "fieldValues": "WIN,LOST"
+    },
+    {
+      "fieldName": "mvp",
+      "fieldType": "mvpResult",
+      "fieldValues": "YES,NO"
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "name": "GameReport",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}
