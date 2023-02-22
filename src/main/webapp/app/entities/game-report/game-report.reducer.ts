@@ -15,7 +15,7 @@ const initialState: EntityState<IGameReport> = {
   updateSuccess: false,
 };
 
-const apiUrl = 'api/game-reports';
+const apiUrl = 'api/v1/game-report';
 
 // Actions
 

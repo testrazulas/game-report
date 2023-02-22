@@ -29,7 +29,7 @@ import tech.jhipster.web.util.ResponseUtil;
  * REST controller for managing {@link br.com.game_report.domain.GameReport}.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 public class GameReportResource {
 
     private final Logger log = LoggerFactory.getLogger(GameReportResource.class);
@@ -55,7 +55,7 @@ public class GameReportResource {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new gameReportDTO, or with status {@code 400 (Bad Request)} if the gameReport has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PostMapping("/game-reports")
+    @PostMapping("/game-report")
     public ResponseEntity<GameReportDTO> createGameReport(@Valid @RequestBody GameReportDTO gameReportDTO) throws URISyntaxException {
         log.debug("REST request to save GameReport : {}", gameReportDTO);
         if (gameReportDTO.getId() != null) {
@@ -63,13 +63,13 @@ public class GameReportResource {
         }
         GameReportDTO result = gameReportService.save(gameReportDTO);
         return ResponseEntity
-            .created(new URI("/api/game-reports/" + result.getId()))
+            .created(new URI("/api/game-report/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
     /**
-     * {@code PUT  /game-reports/:id} : Updates an existing gameReport.
+     * {@code PUT  /game-report/:id} : Updates an existing gameReport.
      *
      * @param id the id of the gameReportDTO to save.
      * @param gameReportDTO the gameReportDTO to update.
@@ -78,7 +78,7 @@ public class GameReportResource {
      * or with status {@code 500 (Internal Server Error)} if the gameReportDTO couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PutMapping("/game-reports/{id}")
+    @PutMapping("/game-report/{id}")
     public ResponseEntity<GameReportDTO> updateGameReport(
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody GameReportDTO gameReportDTO
@@ -103,7 +103,7 @@ public class GameReportResource {
     }
 
     /**
-     * {@code PATCH  /game-reports/:id} : Partial updates given fields of an existing gameReport, field will ignore if it is null
+     * {@code PATCH  /game-report/:id} : Partial updates given fields of an existing gameReport, field will ignore if it is null
      *
      * @param id the id of the gameReportDTO to save.
      * @param gameReportDTO the gameReportDTO to update.
@@ -113,7 +113,7 @@ public class GameReportResource {
      * or with status {@code 500 (Internal Server Error)} if the gameReportDTO couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PatchMapping(value = "/game-reports/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    @PatchMapping(value = "/game-report/{id}", consumes = { "application/json", "application/merge-patch+json" })
     public ResponseEntity<GameReportDTO> partialUpdateGameReport(
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody GameReportDTO gameReportDTO
@@ -139,12 +139,12 @@ public class GameReportResource {
     }
 
     /**
-     * {@code GET  /game-reports} : get all the gameReports.
+     * {@code GET  /game-report} : get all the gameReports.
      *
      * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of gameReports in body.
      */
-    @GetMapping("/game-reports")
+    @GetMapping("/game-report")
     public ResponseEntity<List<GameReportDTO>> getAllGameReports(@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of GameReports");
         Page<GameReportDTO> page = gameReportService.findAll(pageable);
@@ -158,7 +158,7 @@ public class GameReportResource {
      * @param id the id of the gameReportDTO to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the gameReportDTO, or with status {@code 404 (Not Found)}.
      */
-    @GetMapping("/game-reports/{id}")
+    @GetMapping("/game-report/{id}")
     public ResponseEntity<GameReportDTO> getGameReport(@PathVariable Long id) {
         log.debug("REST request to get GameReport : {}", id);
         Optional<GameReportDTO> gameReportDTO = gameReportService.findOne(id);
@@ -171,7 +171,7 @@ public class GameReportResource {
      * @param id the id of the gameReportDTO to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
-    @DeleteMapping("/game-reports/{id}")
+    @DeleteMapping("/game-report/{id}")
     public ResponseEntity<Void> deleteGameReport(@PathVariable Long id) {
         log.debug("REST request to delete GameReport : {}", id);
         gameReportService.delete(id);
