@@ -83,7 +83,7 @@ export const GameReport = () => {
 
   return (
     <div>
-      <h2 id="game-report-heading" data-cy="GameReportHeading">
+      <h2 id="game-report-heading" data-cy="GameReportHeading" className="entities-header">
         <Translate contentKey="gameReportApp.gameReport.home.title">Game Reports</Translate>
         <div className="d-flex justify-content-end">
           <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}>
