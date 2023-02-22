@@ -97,98 +97,100 @@ export const GameReport = () => {
           </Link>
         </div>
       </h2>
-      <div className="table-responsive">
-        {gameReportList && gameReportList.length > 0 ? (
-          <Table responsive>
-            <thead>
-              <tr>
-                <th className="hand" onClick={sort('id')}>
-                  <Translate contentKey="gameReportApp.gameReport.id">ID</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('pokemonName')}>
-                  <Translate contentKey="gameReportApp.gameReport.pokemonName">Pokemon Name</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('type')}>
-                  <Translate contentKey="gameReportApp.gameReport.type">Type</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('lane')}>
-                  <Translate contentKey="gameReportApp.gameReport.lane">Lane</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('gameDate')}>
-                  <Translate contentKey="gameReportApp.gameReport.gameDate">Game Date</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('result')}>
-                  <Translate contentKey="gameReportApp.gameReport.result">Result</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('mvp')}>
-                  <Translate contentKey="gameReportApp.gameReport.mvp">Mvp</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th />
-              </tr>
-            </thead>
-            <tbody>
-              {gameReportList.map((gameReport, i) => (
-                <tr key={`entity-${i}`} data-cy="entityTable">
-                  <td>
-                    <Button tag={Link} to={`/game-report/${gameReport.id}`} color="link" size="sm">
-                      {gameReport.id}
-                    </Button>
-                  </td>
-                  <td>{gameReport.pokemonName}</td>
-                  <td>{gameReport.type}</td>
-                  <td>{gameReport.lane}</td>
-                  <td>{gameReport.gameDate ? <TextFormat type="date" value={gameReport.gameDate} format={APP_DATE_FORMAT} /> : null}</td>
-                  <td>
-                    <Translate contentKey={`gameReportApp.resultGame.${gameReport.result}`} />
-                  </td>
-                  <td>
-                    <Translate contentKey={`gameReportApp.mvpResult.${gameReport.mvp}`} />
-                  </td>
-                  <td className="text-end">
-                    <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`/game-report/${gameReport.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.view">View</Translate>
-                        </span>
-                      </Button>
-                      <Button
-                        tag={Link}
-                        to={`/game-report/${gameReport.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
-                        color="primary"
-                        size="sm"
-                        data-cy="entityEditButton"
-                      >
-                        <FontAwesomeIcon icon="pencil-alt" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.edit">Edit</Translate>
-                        </span>
-                      </Button>
-                      <Button
-                        tag={Link}
-                        to={`/game-report/${gameReport.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
-                        color="danger"
-                        size="sm"
-                        data-cy="entityDeleteButton"
-                      >
-                        <FontAwesomeIcon icon="trash" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.delete">Delete</Translate>
-                        </span>
-                      </Button>
-                    </div>
-                  </td>
+      <div className="table-responsive table-responsive-div">
+        <div className="table-responsive-height-max">
+          {gameReportList && gameReportList.length > 0 ? (
+            <Table responsive>
+              <thead>
+                <tr>
+                  <th className="hand" onClick={sort('id')}>
+                    <Translate contentKey="gameReportApp.gameReport.id">ID</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
+                  <th className="hand" onClick={sort('pokemonName')}>
+                    <Translate contentKey="gameReportApp.gameReport.pokemonName">Pokemon Name</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
+                  <th className="hand" onClick={sort('type')}>
+                    <Translate contentKey="gameReportApp.gameReport.type">Type</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
+                  <th className="hand" onClick={sort('lane')}>
+                    <Translate contentKey="gameReportApp.gameReport.lane">Lane</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
+                  <th className="hand" onClick={sort('gameDate')}>
+                    <Translate contentKey="gameReportApp.gameReport.gameDate">Game Date</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
+                  <th className="hand" onClick={sort('result')}>
+                    <Translate contentKey="gameReportApp.gameReport.result">Result</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
+                  <th className="hand" onClick={sort('mvp')}>
+                    <Translate contentKey="gameReportApp.gameReport.mvp">Mvp</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
+                  <th />
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        ) : (
-          !loading && (
-            <div className="alert alert-warning">
-              <Translate contentKey="gameReportApp.gameReport.home.notFound">No Game Reports found</Translate>
-            </div>
-          )
-        )}
+              </thead>
+              <tbody>
+                {gameReportList.map((gameReport, i) => (
+                  <tr key={`entity-${i}`} data-cy="entityTable">
+                    <td>
+                      <Button tag={Link} to={`/game-report/${gameReport.id}`} color="link" size="sm">
+                        {gameReport.id}
+                      </Button>
+                    </td>
+                    <td>{gameReport.pokemonName}</td>
+                    <td>{gameReport.type}</td>
+                    <td>{gameReport.lane}</td>
+                    <td>{gameReport.gameDate ? <TextFormat type="date" value={gameReport.gameDate} format={APP_DATE_FORMAT} /> : null}</td>
+                    <td>
+                      <Translate contentKey={`gameReportApp.resultGame.${gameReport.result}`} />
+                    </td>
+                    <td>
+                      <Translate contentKey={`gameReportApp.mvpResult.${gameReport.mvp}`} />
+                    </td>
+                    <td className="text-end">
+                      <div className="btn-group flex-btn-group-container">
+                        <Button tag={Link} to={`/game-report/${gameReport.id}`} color="info" size="sm" data-cy="entityDetailsButton">
+                          <FontAwesomeIcon icon="eye" />{' '}
+                          <span className="d-none d-md-inline">
+                            <Translate contentKey="entity.action.view">View</Translate>
+                          </span>
+                        </Button>
+                        <Button
+                          tag={Link}
+                          to={`/game-report/${gameReport.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                          color="primary"
+                          size="sm"
+                          data-cy="entityEditButton"
+                        >
+                          <FontAwesomeIcon icon="pencil-alt" />{' '}
+                          <span className="d-none d-md-inline">
+                            <Translate contentKey="entity.action.edit">Edit</Translate>
+                          </span>
+                        </Button>
+                        <Button
+                          tag={Link}
+                          to={`/game-report/${gameReport.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                          color="danger"
+                          size="sm"
+                          data-cy="entityDeleteButton"
+                        >
+                          <FontAwesomeIcon icon="trash" />{' '}
+                          <span className="d-none d-md-inline">
+                            <Translate contentKey="entity.action.delete">Delete</Translate>
+                          </span>
+                        </Button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          ) : (
+            !loading && (
+              <div className="alert alert-warning">
+                <Translate contentKey="gameReportApp.gameReport.home.notFound">No Game Reports found</Translate>
+              </div>
+            )
+          )}
+        </div>
       </div>
       {totalItems ? (
         <div className={gameReportList && gameReportList.length > 0 ? '' : 'd-none'}>
