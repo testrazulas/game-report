@@ -23,9 +23,11 @@ a {
 
 .app-container {
   box-sizing: border-box;
+  background-color: #e0dfed;
+  height: 100vh;
   .view-container {
     width: 100%;
-    height: calc(100% - 40px);
+    height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 1rem;
@@ -311,6 +313,19 @@ http://stackoverflow.com/questions/23436430/bootstrap-3-input-group-100-width */
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
 
+.appContainerGame {
+  padding: 0px 5.25rem;
+}
+
+.entities-header {
+  color: #5d6ca1;
+  border-bottom: solid 1px #2b58ff2e;
+  padding: 15px 0px;
+  margin-bottom: 23px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
 .table-responsive-div {
   background-color: white;
   padding: 10px;
@@ -319,4 +334,26 @@ http://stackoverflow.com/questions/23436430/bootstrap-3-input-group-100-width */
 
 .table-responsive-height-max {
   max-height: 700px;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #0036ff #f0f0f0;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 11px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #476bee;
+  border-radius: 26px;
+  border: 0px none #ffffff;
 }

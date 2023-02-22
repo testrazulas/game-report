@@ -38,7 +38,7 @@ Developement Ribbon
 Navbar styles
 ========================================================================== */
 .jh-navbar {
-  background-color: #353d47;
+  background-color: #2b58ff;
   padding: 0.2em 1em;
   .profile-image {
     margin: -10px 0px;
@@ -49,7 +49,7 @@ Navbar styles
   .dropdown-item.active,
   .dropdown-item.active:focus,
   .dropdown-item.active:hover {
-    background-color: #353d47;
+    background-color: #2b58ff;
   }
   .dropdown-toggle::after {
     margin-left: 0.15em;
@@ -105,7 +105,8 @@ Navbar styles
 }
 
 .brand-title {
-  font-size: 24px;
+  font-size: 35px;
+  margin-left: 5rem;
   color: $header-color;
   &:hover {
     color: $header-color-hover;
