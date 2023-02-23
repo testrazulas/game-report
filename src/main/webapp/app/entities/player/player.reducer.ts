@@ -15,7 +15,7 @@ const initialState: EntityState<IPlayer> = {
   updateSuccess: false,
 };
 
-const apiUrl = 'api/players';
+const apiUrl = 'api/v1/player';
 
 // Actions
 

@@ -29,7 +29,7 @@ import tech.jhipster.web.util.ResponseUtil;
  * REST controller for managing {@link br.com.game_report.domain.Player}.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 public class PlayerResource {
 
     private final Logger log = LoggerFactory.getLogger(PlayerResource.class);
@@ -49,13 +49,13 @@ public class PlayerResource {
     }
 
     /**
-     * {@code POST  /players} : Create a new player.
+     * {@code POST  /player} : Create a new player.
      *
      * @param playerDTO the playerDTO to create.
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new playerDTO, or with status {@code 400 (Bad Request)} if the player has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PostMapping("/players")
+    @PostMapping("/player")
     public ResponseEntity<PlayerDTO> createPlayer(@Valid @RequestBody PlayerDTO playerDTO) throws URISyntaxException {
         log.debug("REST request to save Player : {}", playerDTO);
         if (playerDTO.getId() != null) {
@@ -63,13 +63,13 @@ public class PlayerResource {
         }
         PlayerDTO result = playerService.save(playerDTO);
         return ResponseEntity
-            .created(new URI("/api/players/" + result.getId()))
+            .created(new URI("/api/v1/player/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
     /**
-     * {@code PUT  /players/:id} : Updates an existing player.
+     * {@code PUT  /player/:id} : Updates an existing player.
      *
      * @param id the id of the playerDTO to save.
      * @param playerDTO the playerDTO to update.
@@ -78,7 +78,7 @@ public class PlayerResource {
      * or with status {@code 500 (Internal Server Error)} if the playerDTO couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PutMapping("/players/{id}")
+    @PutMapping("/player/{id}")
     public ResponseEntity<PlayerDTO> updatePlayer(
         @PathVariable(value = "id", required = false) final Long id,
         @Valid @RequestBody PlayerDTO playerDTO
@@ -103,7 +103,7 @@ public class PlayerResource {
     }
 
     /**
-     * {@code PATCH  /players/:id} : Partial updates given fields of an existing player, field will ignore if it is null
+     * {@code PATCH  /player/:id} : Partial updates given fields of an existing player, field will ignore if it is null
      *
      * @param id the id of the playerDTO to save.
      * @param playerDTO the playerDTO to update.
@@ -139,12 +139,12 @@ public class PlayerResource {
     }
 
     /**
-     * {@code GET  /players} : get all the players.
+     * {@code GET  /player} : get all the players.
      *
      * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of players in body.
      */
-    @GetMapping("/players")
+    @GetMapping("/player")
     public ResponseEntity<List<PlayerDTO>> getAllPlayers(@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
         log.debug("REST request to get a page of Players");
         Page<PlayerDTO> page = playerService.findAll(pageable);
@@ -153,12 +153,12 @@ public class PlayerResource {
     }
 
     /**
-     * {@code GET  /players/:id} : get the "id" player.
+     * {@code GET  /player/:id} : get the "id" player.
      *
      * @param id the id of the playerDTO to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the playerDTO, or with status {@code 404 (Not Found)}.
      */
-    @GetMapping("/players/{id}")
+    @GetMapping("/player/{id}")
     public ResponseEntity<PlayerDTO> getPlayer(@PathVariable Long id) {
         log.debug("REST request to get Player : {}", id);
         Optional<PlayerDTO> playerDTO = playerService.findOne(id);
@@ -171,7 +171,7 @@ public class PlayerResource {
      * @param id the id of the playerDTO to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
-    @DeleteMapping("/players/{id}")
+    @DeleteMapping("/player/{id}")
     public ResponseEntity<Void> deletePlayer(@PathVariable Long id) {
         log.debug("REST request to delete Player : {}", id);
         playerService.delete(id);
