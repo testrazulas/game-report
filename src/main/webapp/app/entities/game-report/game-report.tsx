@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from 'app/config/store';
 
 import { IGameReport } from 'app/shared/model/game-report.model';
 import { getEntities } from './game-report.reducer';
+import { MdCatchingPokemon, MdOutlineCatchingPokemon } from 'react-icons/md';
 
 export const GameReport = () => {
   const dispatch = useAppDispatch();
@@ -85,16 +86,12 @@ export const GameReport = () => {
     <div>
       <h2 id="game-report-heading" data-cy="GameReportHeading" className="entities-header">
         <Translate contentKey="gameReportApp.gameReport.home.title">Game Reports</Translate>
+        <MdCatchingPokemon />
         <div className="d-flex justify-content-end">
           <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}>
             <FontAwesomeIcon icon="sync" spin={loading} />{' '}
-            <Translate contentKey="gameReportApp.gameReport.home.refreshListLabel">Refresh List</Translate>
+            <Translate contentKey="gameReportApp.gameReport.home.refreshListLabel"></Translate>
           </Button>
-          <Link to="/game-report/new" className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
-            <FontAwesomeIcon icon="plus" />
-            &nbsp;
-            <Translate contentKey="gameReportApp.gameReport.home.createLabel">Create new Game Report</Translate>
-          </Link>
         </div>
       </h2>
       <div className="table-responsive table-responsive-div">
@@ -103,55 +100,51 @@ export const GameReport = () => {
             <Table responsive>
               <thead>
                 <tr>
-                  <th className="hand" onClick={sort('id')}>
-                    <Translate contentKey="gameReportApp.gameReport.id">ID</Translate> <FontAwesomeIcon icon="sort" />
+                  <th className="text-center" onClick={sort('id')}>
+                    <Translate contentKey="gameReportApp.gameReport.id">ID</Translate> <MdOutlineCatchingPokemon />
                   </th>
-                  <th className="hand" onClick={sort('pokemonName')}>
-                    <Translate contentKey="gameReportApp.gameReport.pokemonName">Pokemon Name</Translate> <FontAwesomeIcon icon="sort" />
+                  <th className="text-center" onClick={sort('pokemonName')}>
+                    <Translate contentKey="gameReportApp.gameReport.pokemonName">Pokemon Name</Translate> <MdOutlineCatchingPokemon />
                   </th>
-                  <th className="hand" onClick={sort('type')}>
-                    <Translate contentKey="gameReportApp.gameReport.type">Type</Translate> <FontAwesomeIcon icon="sort" />
+                  <th className="text-center" onClick={sort('type')}>
+                    <Translate contentKey="gameReportApp.gameReport.type">Type</Translate> <MdOutlineCatchingPokemon />
                   </th>
-                  <th className="hand" onClick={sort('lane')}>
-                    <Translate contentKey="gameReportApp.gameReport.lane">Lane</Translate> <FontAwesomeIcon icon="sort" />
+                  <th className="text-center" onClick={sort('lane')}>
+                    <Translate contentKey="gameReportApp.gameReport.lane">Lane</Translate> <MdOutlineCatchingPokemon />
                   </th>
-                  <th className="hand" onClick={sort('gameDate')}>
-                    <Translate contentKey="gameReportApp.gameReport.gameDate">Game Date</Translate> <FontAwesomeIcon icon="sort" />
+                  <th className="text-center" onClick={sort('gameDate')}>
+                    <Translate contentKey="gameReportApp.gameReport.gameDate">Game Date</Translate> <MdOutlineCatchingPokemon />
                   </th>
-                  <th className="hand" onClick={sort('result')}>
-                    <Translate contentKey="gameReportApp.gameReport.result">Result</Translate> <FontAwesomeIcon icon="sort" />
+                  <th className="text-center" onClick={sort('result')}>
+                    <Translate contentKey="gameReportApp.gameReport.result">Result</Translate> <MdOutlineCatchingPokemon />
                   </th>
-                  <th className="hand" onClick={sort('mvp')}>
-                    <Translate contentKey="gameReportApp.gameReport.mvp">Mvp</Translate> <FontAwesomeIcon icon="sort" />
+                  <th className="text-center" onClick={sort('mvp')}>
+                    <Translate contentKey="gameReportApp.gameReport.mvp">Mvp</Translate> <MdOutlineCatchingPokemon />
                   </th>
-                  <th />
+                  <th className="hand text-center">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {gameReportList.map((gameReport, i) => (
                   <tr key={`entity-${i}`} data-cy="entityTable">
-                    <td>
-                      <Button tag={Link} to={`/game-report/${gameReport.id}`} color="link" size="sm">
-                        {gameReport.id}
-                      </Button>
+                    <td className="text-center">{gameReport.id}</td>
+                    <td className="text-center">{gameReport.pokemonName}</td>
+                    <td className="text-center">{gameReport.type}</td>
+                    <td className="text-center">{gameReport.lane}</td>
+                    <td className="text-center">
+                      {gameReport.gameDate ? <TextFormat type="date" value={gameReport.gameDate} format={APP_DATE_FORMAT} /> : null}
                     </td>
-                    <td>{gameReport.pokemonName}</td>
-                    <td>{gameReport.type}</td>
-                    <td>{gameReport.lane}</td>
-                    <td>{gameReport.gameDate ? <TextFormat type="date" value={gameReport.gameDate} format={APP_DATE_FORMAT} /> : null}</td>
-                    <td>
+                    <td className="text-center">
                       <Translate contentKey={`gameReportApp.resultGame.${gameReport.result}`} />
                     </td>
-                    <td>
+                    <td className="text-center">
                       <Translate contentKey={`gameReportApp.mvpResult.${gameReport.mvp}`} />
                     </td>
-                    <td className="text-end">
+                    <td className="text-center">
                       <div className="btn-group flex-btn-group-container">
                         <Button tag={Link} to={`/game-report/${gameReport.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                          <FontAwesomeIcon icon="eye" />{' '}
-                          <span className="d-none d-md-inline">
-                            <Translate contentKey="entity.action.view">View</Translate>
-                          </span>
+                          <div title="View GameReport" className="svgView"></div>
+                          <span className="d-none d-md-inline"></span>
                         </Button>
                         <Button
                           tag={Link}
@@ -160,10 +153,8 @@ export const GameReport = () => {
                           size="sm"
                           data-cy="entityEditButton"
                         >
-                          <FontAwesomeIcon icon="pencil-alt" />{' '}
-                          <span className="d-none d-md-inline">
-                            <Translate contentKey="entity.action.edit">Edit</Translate>
-                          </span>
+                          <div title="Edit GameReport" className="svgEdit"></div>
+                          <span className="d-none d-md-inline"></span>
                         </Button>
                         <Button
                           tag={Link}
@@ -172,10 +163,8 @@ export const GameReport = () => {
                           size="sm"
                           data-cy="entityDeleteButton"
                         >
-                          <FontAwesomeIcon icon="trash" />{' '}
-                          <span className="d-none d-md-inline">
-                            <Translate contentKey="entity.action.delete">Delete</Translate>
-                          </span>
+                          <div title="Delete GameReport" className="svgDelete"></div>
+                          <span className="d-none d-md-inline"></span>
                         </Button>
                       </div>
                     </td>
@@ -210,6 +199,13 @@ export const GameReport = () => {
       ) : (
         ''
       )}
+      <div className="svgPokemon">
+        <Link to="/game-report/new" className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
+          &nbsp;
+          <div className="svgPlus"></div>
+          <Translate contentKey="gameReportApp.gameReport.home.createLabel">new Game Report</Translate>
+        </Link>
+      </div>
       <div className="hipster"></div>
     </div>
   );

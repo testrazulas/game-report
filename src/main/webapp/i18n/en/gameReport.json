@@ -2,9 +2,9 @@
   "gameReportApp": {
     "gameReport": {
       "home": {
-        "title": "Game Reports",
-        "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Game Report",
+        "title": "Game Reports ",
+        "refreshListLabel": "Refresh List",
+        "createLabel": "New Game Report",
         "createOrEditLabel": "Create or edit a Game Report",
         "notFound": "No Game Reports found"
       },

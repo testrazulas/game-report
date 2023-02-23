@@ -8,3 +8,36 @@ Main page styles
   background: url('../../../content/images/pokemon5.png') no-repeat center top;
   background-size: contain;
 }
+
+.svgPlus {
+  float: right;
+  width: 33px;
+  height: 32px;
+  margin-left: 11px;
+  background: url('../../../content/images/pokemon6.png') no-repeat;
+  background-size: contain;
+}
+
+.svgDelete {
+  float: right;
+  width: 33px;
+  height: 32px;
+  background: url('../../../content/images/pokemon7.png') no-repeat;
+  background-size: contain;
+}
+
+.svgView {
+  float: right;
+  width: 33px;
+  height: 32px;
+  background: url('../../../content/images/pokemon8.png') no-repeat;
+  background-size: contain;
+}
+
+.svgEdit {
+  float: right;
+  width: 33px;
+  height: 32px;
+  background: url('../../../content/images/pokemon9.png') no-repeat;
+  background-size: contain;
+}
