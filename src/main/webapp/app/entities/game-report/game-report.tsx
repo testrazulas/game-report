@@ -210,6 +210,7 @@ export const GameReport = () => {
       ) : (
         ''
       )}
+      <div className="hipster"></div>
     </div>
   );
 };
