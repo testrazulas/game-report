@@ -30,7 +30,7 @@ export const Home = () => {
             <h2>
               <Translate contentKey="home.title">Welcome to</Translate>
             </h2>
-            <b className="siraTitle">GAME-POKEMON</b>
+            <b className="gameReportTitle">GAME-POKEMON</b>
             <p className="lead"></p>
             <div>
               <Alert color="warning">

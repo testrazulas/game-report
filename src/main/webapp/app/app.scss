@@ -357,3 +357,21 @@ http://stackoverflow.com/questions/23436430/bootstrap-3-input-group-100-width */
   border-radius: 26px;
   border: 0px none #ffffff;
 }
+
+.gameReportTitle {
+  font-size: 7rem;
+  line-height: 4rem;
+  color: #000;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.gameReport:hover {
+  color: #2b58ff;
+}
+
+.gameHeaderColor {
+  color: red;
+}
