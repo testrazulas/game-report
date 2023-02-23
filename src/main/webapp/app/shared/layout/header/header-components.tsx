@@ -9,16 +9,14 @@ import { MdCatchingPokemon } from 'react-icons/md';
 
 export const BrandIcon = props => (
   <div {...props} className="brand-icon">
-    <img src="content/images/logo-jhipster.png" alt="Logo" />
+    <img src="content/images/pokemon4.png" alt="Logo" />
   </div>
 );
 
 export const Brand = () => (
   <NavbarBrand tag={Link} to="/" className="brand-logo">
     <BrandIcon />
-    <span className="brand-title">
-      <Translate contentKey="global.title">Game_report</Translate>
-    </span>
+    <span className="brand-title">GAME-REPORT</span>
     <span className="navbar-version">{VERSION}</span>
   </NavbarBrand>
 );

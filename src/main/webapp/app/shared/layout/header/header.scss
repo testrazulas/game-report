@@ -91,16 +91,25 @@ Navbar styles
 }
 
 .brand-logo {
+  display: flex;
+  align-items: center;
   &:hover {
     text-decoration: none;
   }
   .brand-icon {
-    height: 35px;
     width: auto;
-    display: inline-block;
+    margin-right: -72px;
+    margin-left: 80px;
     img {
       height: 45px;
     }
+  }
+  .brand-title {
+    font-size: 24px;
+  }
+  .navbar-version {
+    font-size: 14px;
+    margin-left: auto;
   }
 }
 
