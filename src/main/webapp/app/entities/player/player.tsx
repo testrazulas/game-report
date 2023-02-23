@@ -83,7 +83,7 @@ export const Player = () => {
 
   return (
     <div>
-      <h2 id="player-heading" data-cy="PlayerHeading">
+      <h2 id="player-heading" data-cy="PlayerHeading" className="entities-header">
         <Translate contentKey="gameReportApp.player.home.title">Players</Translate>
         <div className="d-flex justify-content-end">
           <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}>
@@ -97,78 +97,80 @@ export const Player = () => {
           </Link>
         </div>
       </h2>
-      <div className="table-responsive">
-        {playerList && playerList.length > 0 ? (
-          <Table responsive>
-            <thead>
-              <tr>
-                <th className="hand" onClick={sort('id')}>
-                  <Translate contentKey="gameReportApp.player.id">ID</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('playerName')}>
-                  <Translate contentKey="gameReportApp.player.playerName">Player Name</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('rankPlayer')}>
-                  <Translate contentKey="gameReportApp.player.rankPlayer">Rank Player</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th />
-              </tr>
-            </thead>
-            <tbody>
-              {playerList.map((player, i) => (
-                <tr key={`entity-${i}`} data-cy="entityTable">
-                  <td>
-                    <Button tag={Link} to={`/player/${player.id}`} color="link" size="sm">
-                      {player.id}
-                    </Button>
-                  </td>
-                  <td>{player.playerName}</td>
-                  <td>{player.rankPlayer}</td>
-                  <td className="text-end">
-                    <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`/player/${player.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.view">View</Translate>
-                        </span>
-                      </Button>
-                      <Button
-                        tag={Link}
-                        to={`/player/${player.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
-                        color="primary"
-                        size="sm"
-                        data-cy="entityEditButton"
-                      >
-                        <FontAwesomeIcon icon="pencil-alt" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.edit">Edit</Translate>
-                        </span>
-                      </Button>
-                      <Button
-                        tag={Link}
-                        to={`/player/${player.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
-                        color="danger"
-                        size="sm"
-                        data-cy="entityDeleteButton"
-                      >
-                        <FontAwesomeIcon icon="trash" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.delete">Delete</Translate>
-                        </span>
-                      </Button>
-                    </div>
-                  </td>
+      <div className="table-responsive table-responsive-div">
+        <div className="table-responsive-height-max">
+          {playerList && playerList.length > 0 ? (
+            <Table responsive>
+              <thead>
+                <tr>
+                  <th className="hand" onClick={sort('id')}>
+                    <Translate contentKey="gameReportApp.player.id">ID</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
+                  <th className="hand" onClick={sort('playerName')}>
+                    <Translate contentKey="gameReportApp.player.playerName">Player Name</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
+                  <th className="hand" onClick={sort('rankPlayer')}>
+                    <Translate contentKey="gameReportApp.player.rankPlayer">Rank Player</Translate> <FontAwesomeIcon icon="sort" />
+                  </th>
+                  <th />
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        ) : (
-          !loading && (
-            <div className="alert alert-warning">
-              <Translate contentKey="gameReportApp.player.home.notFound">No Players found</Translate>
-            </div>
-          )
-        )}
+              </thead>
+              <tbody>
+                {playerList.map((player, i) => (
+                  <tr key={`entity-${i}`} data-cy="entityTable">
+                    <td>
+                      <Button tag={Link} to={`/player/${player.id}`} color="link" size="sm">
+                        {player.id}
+                      </Button>
+                    </td>
+                    <td>{player.playerName}</td>
+                    <td>{player.rankPlayer}</td>
+                    <td className="text-end">
+                      <div className="btn-group flex-btn-group-container">
+                        <Button tag={Link} to={`/player/${player.id}`} color="info" size="sm" data-cy="entityDetailsButton">
+                          <FontAwesomeIcon icon="eye" />{' '}
+                          <span className="d-none d-md-inline">
+                            <Translate contentKey="entity.action.view">View</Translate>
+                          </span>
+                        </Button>
+                        <Button
+                          tag={Link}
+                          to={`/player/${player.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                          color="primary"
+                          size="sm"
+                          data-cy="entityEditButton"
+                        >
+                          <FontAwesomeIcon icon="pencil-alt" />{' '}
+                          <span className="d-none d-md-inline">
+                            <Translate contentKey="entity.action.edit">Edit</Translate>
+                          </span>
+                        </Button>
+                        <Button
+                          tag={Link}
+                          to={`/player/${player.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
+                          color="danger"
+                          size="sm"
+                          data-cy="entityDeleteButton"
+                        >
+                          <FontAwesomeIcon icon="trash" />{' '}
+                          <span className="d-none d-md-inline">
+                            <Translate contentKey="entity.action.delete">Delete</Translate>
+                          </span>
+                        </Button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          ) : (
+            !loading && (
+              <div className="alert alert-warning">
+                <Translate contentKey="gameReportApp.player.home.notFound">No Players found</Translate>
+              </div>
+            )
+          )}
+        </div>
       </div>
       {totalItems ? (
         <div className={playerList && playerList.length > 0 ? '' : 'd-none'}>
