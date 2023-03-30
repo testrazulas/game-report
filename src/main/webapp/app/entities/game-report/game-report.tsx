@@ -89,8 +89,7 @@ export const GameReport = () => {
         <MdCatchingPokemon />
         <div className="d-flex justify-content-end">
           <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}>
-            <FontAwesomeIcon icon="sync" spin={loading} />{' '}
-            <Translate contentKey="gameReportApp.gameReport.home.refreshListLabel"></Translate>
+            <div className="svgRefresh"></div>
           </Button>
         </div>
       </h2>
